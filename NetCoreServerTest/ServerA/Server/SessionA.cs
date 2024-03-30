@@ -25,9 +25,6 @@ namespace ServerA.Server
             var response = new ReadOnlySpan<byte>(buffer, (int)offset, (int)size);
             var text = Encoding.UTF8.GetString(response);
             Console.WriteLine($"SessionA received: {text}");
-
-            Console.WriteLine("SessionA forwarding through ServerBClient");
-            ((ServerA)Server).ServerBClient.Send(Encoding.UTF8.GetBytes(text));
         }
 
         protected override void OnError(SocketError error)

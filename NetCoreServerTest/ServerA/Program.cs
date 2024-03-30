@@ -1,8 +1,5 @@
-﻿using Common;
-using NetCoreServer;
-using ServerA.Clients;
+﻿using ServerA.Clients;
 using System.Net;
-using System.Security.Authentication;
 
 namespace ServerA
 {
@@ -22,6 +19,9 @@ namespace ServerA
 
             var serverA = new Server.ServerA(IPAddress.Any, port, serverBClient);
             serverA.Start();
+
+            Console.WriteLine("ServerA Sending Ping!");
+            serverBClient.Send("Ping");
 
             while (true)
             {

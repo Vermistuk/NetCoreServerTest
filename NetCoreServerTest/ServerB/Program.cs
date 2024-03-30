@@ -1,7 +1,4 @@
-﻿using Common;
-using NetCoreServer;
-using System.Net;
-using System.Security.Authentication;
+﻿using System.Net;
 
 namespace ServerB
 {

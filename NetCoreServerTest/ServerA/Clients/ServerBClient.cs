@@ -38,8 +38,6 @@ namespace ServerA.Clients
             var text = Encoding.UTF8.GetString(response);
 
             Console.WriteLine($"ServerBClient received {text}");
-
-            Console.WriteLine("ServerBClient forwarding through SessionA");
             
         }
 
