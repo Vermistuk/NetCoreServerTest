@@ -10,16 +10,16 @@ using ServerA.Clients;
 
 namespace ServerA.Server
 {
-    internal sealed class ServerA : SslServer
+    internal sealed class ServerA : TcpServer
     {
-        public ServerA(SslContext context, IPAddress address, int port, ServerBClient serverBClient) : base(context, address, port) 
+        public ServerA(IPAddress address, int port, ServerBClient serverBClient) : base(address, port) 
         {
             ServerBClient = serverBClient;
         }
 
         public ServerBClient ServerBClient; 
 
-        protected override SslSession CreateSession() { return new SessionA(this); }
+        protected override TcpSession CreateSession() { return new SessionA(this); }
 
         protected override void OnError(SocketError error)
         {

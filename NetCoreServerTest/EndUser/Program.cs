@@ -11,10 +11,7 @@ namespace EndUser
         {
             Console.WriteLine("EndUser connecting");
 
-            var dummyCert = CertBuilder.GenerateSelfSignedCertificate(CertBuilder.ServerASubject);
-            var sslContext = new SslContext(SslProtocols.Tls12, dummyCert, (sender, certificate, chain, sslPolicyErrors) => true);
-
-            var client = new ServerAClient(sslContext, "127.0.0.1", 13001);
+            var client = new ServerAClient("127.0.0.1", 13001);
 
             client.Connect();
 

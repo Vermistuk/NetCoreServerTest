@@ -14,13 +14,10 @@ namespace ServerB
 
         public static async Task StartServer()
         {
-            var dummyCert = CertBuilder.GenerateSelfSignedCertificate(CertBuilder.ServerBSubject);
-            var sslContext = new SslContext(SslProtocols.Tls12, dummyCert, (sender, certificate, chain, sslPolicyErrors) => true);
-
             var ip = "127.0.0.1";
             var port = 13037;
 
-            var loginServer = new Server.ServerB(sslContext, IPAddress.Any, port);
+            var loginServer = new Server.ServerB(IPAddress.Any, port);
             loginServer.Start();
 
             while (true)

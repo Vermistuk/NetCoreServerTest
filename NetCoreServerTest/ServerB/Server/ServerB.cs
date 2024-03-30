@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace ServerB.Server
 {
-    internal sealed class ServerB : SslServer
+    internal sealed class ServerB : TcpServer
     {
-        public ServerB(SslContext context, IPAddress address, int port) : base(context, address, port) { }
+        public ServerB(IPAddress address, int port) : base(address, port) { }
 
-        protected override SslSession CreateSession() { return new SessionB(this); }
+        protected override TcpSession CreateSession() { return new SessionB(this); }
 
         protected override void OnError(SocketError error)
         {

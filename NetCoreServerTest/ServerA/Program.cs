@@ -17,13 +17,10 @@ namespace ServerA
         {
             var serverBClient = MakeServerBClient();
 
-            var dummyCert = CertBuilder.GenerateSelfSignedCertificate(CertBuilder.ServerASubject);
-            var sslContext = new SslContext(SslProtocols.Tls12, dummyCert, (sender, certificate, chain, sslPolicyErrors) => true);
-
             var ip = "127.0.0.1";
             var port = 13001;
 
-            var serverA = new Server.ServerA(sslContext, IPAddress.Any, port, serverBClient);
+            var serverA = new Server.ServerA(IPAddress.Any, port, serverBClient);
             serverA.Start();
 
             while (true)
@@ -34,10 +31,7 @@ namespace ServerA
 
         public static ServerBClient MakeServerBClient()
         {
-            var dummyCert = CertBuilder.GenerateSelfSignedCertificate(CertBuilder.ServerBSubject);
-            var sslContext = new SslContext(SslProtocols.Tls12, dummyCert, (sender, certificate, chain, sslPolicyErrors) => true);
-
-            var client = new ServerBClient(sslContext, "127.0.0.1", 13037);
+            var client = new ServerBClient("127.0.0.1", 13037);
 
             client.Connect();
             return client;

@@ -8,15 +8,11 @@ using System.Threading.Tasks;
 
 namespace ServerB.Server
 {
-    internal sealed class SessionB : SslSession
+    internal sealed class SessionB : TcpSession
     {
-        public SessionB(SslServer server) : base(server) { }
+        public SessionB(TcpServer server) : base(server) { }
 
         protected override void OnConnected()
-        {
-        }
-
-        protected override void OnHandshaked()
         {
         }
 

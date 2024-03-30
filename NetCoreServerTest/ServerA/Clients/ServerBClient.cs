@@ -5,12 +5,13 @@ using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using TcpClient = NetCoreServer.TcpClient;
 
 namespace ServerA.Clients
 {
-    internal sealed class ServerBClient : SslClient
+    internal sealed class ServerBClient : TcpClient
     {
-        public ServerBClient(SslContext context, string address, int port) : base(context, address, port) { }
+        public ServerBClient(string address, int port) : base(address, port) { }
 
         public void DisconnectAndStop()
         {
@@ -24,10 +25,6 @@ namespace ServerA.Clients
         }
 
         protected override void OnConnected()
-        {
-        }
-
-        protected override void OnHandshaked()
         {
         }
 
